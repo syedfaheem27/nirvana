@@ -1,47 +1,36 @@
-import { styled } from "styled-components";
-import { GlobalStyles } from "./styles/globalStyles";
-import Button from "./ui/Button";
-import Input from "./ui/Input";
-import Heading from "./ui/Heading";
-import Row from "./ui/Row";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import Users from "./pages/Users";
+import Account from "./pages/Account";
+import Cabins from "./pages/Cabins";
+import Login from "./pages/Login";
+import PageNotFound from "./pages/PageNotFound";
+import Settings from "./pages/Settings";
+import Bookings from "./pages/Bookings";
 
-function App() {
-  const StyledApp = styled.div`
-    /* background-color: orangered; */
-    padding: 1rem 2rem;
-  `;
+import { GlobalStyles } from "./styles/globalStyles";
+import AppLayout from "./ui/AppLayout";
+const App = () => {
   return (
     <>
       <GlobalStyles />
-      <StyledApp>
-        <Row>
-          <Heading as="h1">Nirvana</Heading>
-
-          <Row type="horizontal">
-            <Heading as="h3">Check In and Out</Heading>
-            <div>
-              <Button onClick={() => alert("Check in")}>Check In</Button>
-              <Button
-                variation="secondary"
-                size="small"
-                onClick={() => alert("Check out")}
-              >
-                Check Out
-              </Button>
-            </div>
-          </Row>
-
-          <Row>
-            <Heading as="h4">Forms</Heading>
-            <form>
-              <Input type="number" placeholder="Number of guests" />
-              <Input type="number" placeholder="Number of guests" />
-            </form>
-          </Row>
-        </Row>
-      </StyledApp>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<AppLayout />}>
+            <Route index element={<Navigate replace={true} to="dashboard" />} />
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="bookings" element={<Bookings />} />
+            <Route path="cabins" element={<Cabins />} />
+            <Route path="users" element={<Users />} />
+            <Route path="settings" element={<Settings />} />
+            <Route path="account" element={<Account />} />
+          </Route>
+          <Route path="login" element={<Login />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
-}
+};
 
 export default App;
