@@ -11,6 +11,7 @@ const Table = styled.div`
   background-color: var(--color-grey-0);
   border-radius: 7px;
   overflow: hidden;
+  flex-grow: 1;
 `;
 
 const TableHeader = styled.header`
