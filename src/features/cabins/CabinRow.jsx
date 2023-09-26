@@ -50,7 +50,7 @@ const CabinRow = ({ cabin }) => {
     regularPrice,
     discount,
     image,
-    maxcapacity,
+    maxCapacity,
   } = cabin;
 
   const queryClient = useQueryClient();
@@ -69,7 +69,7 @@ const CabinRow = ({ cabin }) => {
     <TableRow>
       <Img src={image} />
       <Cabin>{name}</Cabin>
-      <div>Fits upto {maxcapacity} guests</div>
+      <div>Fits upto {maxCapacity} guests</div>
       <Price>{formatCurrency(regularPrice)}</Price>
       <Discount>{formatCurrency(discount)}</Discount>
       <button disabled={isDeleting} onClick={() => mutate(cabinId)}>
