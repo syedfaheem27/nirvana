@@ -10,7 +10,6 @@ const StyledAppLayout = styled.div`
 `;
 
 const StyledMain = styled.main`
-  height: 100vh;
   background: var(--color-grey-50);
   padding: 4rem 5.2rem 6.4rem;
 `;
