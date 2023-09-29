@@ -35,6 +35,7 @@ export async function createEditCabin(newCabin, editId) {
     query = query.update({ ...newCabin, image: imagePath }).eq("id", editId);
 
   const { data, error } = await query.select().single();
+
   if (error) {
     console.error(error);
     throw new Error("Cabin could not be created!");
@@ -61,7 +62,6 @@ export async function createEditCabin(newCabin, editId) {
 }
 
 export async function deleteCabin(id) {
-  console.log(id);
   const { error, data } = await supabase.from("cabins").delete().eq("id", id);
 
   if (error) {

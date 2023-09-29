@@ -1,6 +1,5 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { toast } from "react-hot-toast";
-import { useForm } from "react-hook-form";
+import { useCreateCabin } from "./useCreateCabin";
+import { useEditcabin } from "./useEditCabin";
 
 import Input from "../../ui/Input";
 import Form from "../../ui/Form";
@@ -9,43 +8,22 @@ import FileInput from "../../ui/FileInput";
 import Textarea from "../../ui/Textarea";
 import FormRow from "../../ui/FormRow";
 
-import { createEditCabin } from "../../services/apiCabins";
+import { useForm } from "react-hook-form";
 
 function CreateCabinForm({ cabin }) {
   const { id: editCabinId, ...editCabinDetails } = cabin ?? {};
   const editSession = Boolean(editCabinId);
 
-  const queryClient = useQueryClient();
   const { register, handleSubmit, reset, getValues, formState } = useForm({
     defaultValues: editSession ? editCabinDetails : {},
   });
   const { errors } = formState;
 
-  //For creating a cabin
-  const { mutate: createCabin, isLoading: isCreatingCabin } = useMutation({
-    mutationFn: createEditCabin,
-    onSuccess: () => {
-      toast.success("Cabin succesfully created!");
-      queryClient.invalidateQueries(["cabins"]);
-      reset();
-    },
-    onError: (err) => {
-      toast.error(err.message);
-    },
-  });
+  //Create a cabin
+  const { isCreatingCabin, createCabin } = useCreateCabin();
 
   //For editing a cabin
-  const { mutate: editCabin, isLoading: isEditingCabin } = useMutation({
-    mutationFn: ({ newCabinData, id }) => createEditCabin(newCabinData, id),
-    onSuccess: () => {
-      toast.success("Cabin succesfully edited!");
-      queryClient.invalidateQueries(["cabins"]);
-      reset();
-    },
-    onError: (err) => {
-      toast.error(err.message);
-    },
-  });
+  const { isEditingCabin, editCabin } = useEditcabin();
 
   const isWorking = isEditingCabin || isCreatingCabin;
 
@@ -53,16 +31,38 @@ function CreateCabinForm({ cabin }) {
     // mutate({ ...data, image: data.image[0] });
     // console.log({ ...data, image: data.image[0] });
     const image = typeof data.image === "string" ? data.image : data.image[0];
+
     if (editCabinId) {
-      editCabin({
-        newCabinData: {
-          ...data,
-          image,
+      editCabin(
+        {
+          newCabinData: {
+            ...data,
+            image,
+          },
+          id: editCabinId,
         },
-        id: editCabinId,
-      });
+        {
+          //Data returned by the createEditCabin function passed in the mutate property in
+          //the useMutation hook
+          // console.log(data);
+          onSuccess: () => {
+            // console.log(data);
+            reset();
+          },
+        }
+      );
     } else {
-      createCabin({ ...data, image: image });
+      createCabin(
+        { ...data, image: image },
+        {
+          onSuccess: () => {
+            //Data returned by the createEditCabin function passed in the mutate property in
+            //the useMutation hook
+            // console.log(data);
+            reset();
+          },
+        }
+      );
     }
   }
 
