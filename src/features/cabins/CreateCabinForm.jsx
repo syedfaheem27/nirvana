@@ -1,5 +1,5 @@
 import { useCreateCabin } from "./useCreateCabin";
-import { useEditcabin } from "./useEditCabin";
+import { useUpdateCabin } from "./useUpdateCabin";
 
 import Input from "../../ui/Input";
 import Form from "../../ui/Form";
@@ -23,9 +23,9 @@ function CreateCabinForm({ cabin }) {
   const { isCreatingCabin, createCabin } = useCreateCabin();
 
   //For editing a cabin
-  const { isEditingCabin, editCabin } = useEditcabin();
+  const { isUpdatingCabin, updateCabin } = useUpdateCabin();
 
-  const isWorking = isEditingCabin || isCreatingCabin;
+  const isWorking = isUpdatingCabin || isCreatingCabin;
 
   function submitHandler(data) {
     // mutate({ ...data, image: data.image[0] });
@@ -33,7 +33,7 @@ function CreateCabinForm({ cabin }) {
     const image = typeof data.image === "string" ? data.image : data.image[0];
 
     if (editCabinId) {
-      editCabin(
+      updateCabin(
         {
           newCabinData: {
             ...data,

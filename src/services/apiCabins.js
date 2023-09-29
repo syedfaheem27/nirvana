@@ -41,6 +41,9 @@ export async function createEditCabin(newCabin, editId) {
     throw new Error("Cabin could not be created!");
   }
 
+  //Incase we have an image path, we don't need to store the image in the bucket as it's already there
+  if (hasImagePath) return data;
+
   //Cabin creation successfull => store image in the bucket
   const { error: imageStoreError } = await supabase.storage
     .from("cabin-images")
