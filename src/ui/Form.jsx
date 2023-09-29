@@ -17,8 +17,6 @@ const Form = styled.form`
     css`
       width: 80rem;
     `}
-    
-  overflow: hidden;
   font-size: 1.4rem;
 `;
 

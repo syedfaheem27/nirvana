@@ -12,6 +12,7 @@ const StyledAppLayout = styled.div`
 const StyledMain = styled.main`
   background: var(--color-grey-50);
   padding: 4rem 5.2rem 6.4rem;
+  overflow: auto;
 `;
 
 const StyledContainer = styled.div`
@@ -20,6 +21,7 @@ const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3.6rem;
+  height: 80vh;
 `;
 const AppLayout = () => {
   return (

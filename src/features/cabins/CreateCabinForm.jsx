@@ -31,7 +31,7 @@ function CreateCabinForm() {
   function submitHandler(data) {
     mutate({ ...data, image: data.image[0] });
     // console.log(data);
-    // console.log({ ...data, image: data.image[0].name });
+    console.log({ ...data, image: data.image[0] });
   }
 
   function onError(errors) {
