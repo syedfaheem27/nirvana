@@ -80,6 +80,7 @@ if onCloseModal is defined => cabinForm is to be displayed inside a modal
 
   return (
     <Form
+      // onClick={(e) => e.stopPropagation()}
       type={onCloseModal ? "modal" : "regular"}
       onSubmit={handleSubmit(submitHandler, onError)}
     >

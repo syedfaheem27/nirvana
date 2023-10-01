@@ -1,7 +1,7 @@
 import Button from "../../ui/Button";
-import Modal from "../../ui/Modal";
 import CabinTable from "./CabinTable";
 import CreateCabinForm from "./CreateCabinForm";
+import Modal from "../../ui/Modal";
 
 /*
 Here i want the AddCabins component to be concerned only about adding a cabin 

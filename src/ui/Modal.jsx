@@ -3,6 +3,7 @@ import { createContext, useContext, useState } from "react";
 import { createPortal } from "react-dom";
 import { HiXMark } from "react-icons/hi2";
 import styled from "styled-components";
+import { useOutsideCabin } from "../hooks/useOutsideClick";
 
 const StyledModal = styled.div`
   position: fixed;
@@ -89,11 +90,13 @@ the cabin is updated or added
 
 const Window = ({ children, name }) => {
   const { modalName, close } = useContext(ModalContext);
+  const ref = useOutsideCabin(close, true);
 
   if (modalName !== name) return null;
+  // <Overlay onClick={close}></Overlay>
   return createPortal(
-    <Overlay onClick={close}>
-      <StyledModal>
+    <Overlay>
+      <StyledModal ref={ref}>
         <ModalButton onClick={close}>
           <HiXMark />
         </ModalButton>
