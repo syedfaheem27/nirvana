@@ -10,13 +10,7 @@ import FormRow from "../../ui/FormRow";
 
 import { useForm } from "react-hook-form";
 
-/*
-Getting a type prop for customizing styling on the Form
-"regular" - form rendered outside a modal
-"modal" - form rendered inside a modal
-  */
-
-function CreateCabinForm({ cabin, onCloseModal, type }) {
+function CreateCabinForm({ cabin, onCloseModal }) {
   const { id: editCabinId, ...editCabinDetails } = cabin ?? {};
   const editSession = Boolean(editCabinId);
 
@@ -77,9 +71,18 @@ function CreateCabinForm({ cabin, onCloseModal, type }) {
   function onError(errors) {
     console.log(errors);
   }
+  /*
+Setting a type prop for customizing styling on the Form 
+if onCloseModal is defined => cabinForm is to be displayed inside a modal
+"regular" - form rendered outside a modal
+"modal" - form rendered inside a modal
+  */
 
   return (
-    <Form type={type} onSubmit={handleSubmit(submitHandler, onError)}>
+    <Form
+      type={onCloseModal ? "modal" : "regular"}
+      onSubmit={handleSubmit(submitHandler, onError)}
+    >
       <FormRow label="Cabin Name" errors={errors?.name?.message}>
         <Input
           type="text"
