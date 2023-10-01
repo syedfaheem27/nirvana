@@ -1,14 +1,14 @@
-import { useState } from "react";
-
-import CreateCabinForm from "../features/cabins/CreateCabinForm";
 import CabinTable from "../features/cabins/CabinTable";
 import Heading from "../ui/Heading";
 import Row from "../ui/Row";
-import Button from "../ui/Button";
+
+import AddCabins from "../features/cabins/AddCabins";
+
+/*Placing all the stateful logic in a separate component
+as the cabins page should be as lean as possible and without 
+any stateful logic */
 
 function Cabins() {
-  const [showForm, setShowForm] = useState(false);
-
   return (
     <>
       <Row type="horizontal">
@@ -20,10 +20,7 @@ function Cabins() {
         <CabinTable />
       </Row>
       <Row>
-        <Button onClick={() => setShowForm((show) => !show)}>
-          {showForm ? "Hide Form" : "Show Form"}
-        </Button>
-        {showForm && <CreateCabinForm />}
+        <AddCabins />
       </Row>
     </>
   );

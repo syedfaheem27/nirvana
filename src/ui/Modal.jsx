@@ -1,3 +1,5 @@
+import { createPortal } from "react-dom";
+import { HiXMark } from "react-icons/hi2";
 import styled from "styled-components";
 
 const StyledModal = styled.div`
@@ -24,7 +26,7 @@ const Overlay = styled.div`
   transition: all 0.5s;
 `;
 
-const Button = styled.button`
+const ModalButton = styled.button`
   background: none;
   border: none;
   padding: 0.4rem;
@@ -48,3 +50,25 @@ const Button = styled.button`
     color: var(--color-grey-500);
   }
 `;
+
+/*
+Creating a portal for the modal so that it gets
+rendered outside the root yet being at the same place 
+in the component tree so that we can pass props easily
+without breaking the code
+*/
+const Modal = ({ children, onClose }) => {
+  return createPortal(
+    <Overlay onClick={onClose}>
+      <StyledModal>
+        <ModalButton onClick={onClose}>
+          <HiXMark />
+        </ModalButton>
+        <div>{children}</div>
+      </StyledModal>
+    </Overlay>,
+    document.body
+  );
+};
+
+export default Modal;

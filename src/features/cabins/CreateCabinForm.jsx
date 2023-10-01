@@ -10,7 +10,13 @@ import FormRow from "../../ui/FormRow";
 
 import { useForm } from "react-hook-form";
 
-function CreateCabinForm({ cabin }) {
+/*
+Getting a type prop for customizing styling on the Form
+"regular" - form rendered outside a modal
+"modal" - form rendered inside a modal
+  */
+
+function CreateCabinForm({ cabin, onCloseModal, type }) {
   const { id: editCabinId, ...editCabinDetails } = cabin ?? {};
   const editSession = Boolean(editCabinId);
 
@@ -48,6 +54,7 @@ function CreateCabinForm({ cabin }) {
           onSuccess: () => {
             // console.log(data);
             reset();
+            () => onCloseModal?.();
           },
         }
       );
@@ -60,6 +67,7 @@ function CreateCabinForm({ cabin }) {
             //the useMutation hook
             // console.log(data);
             reset();
+            () => onCloseModal?.();
           },
         }
       );
@@ -69,8 +77,9 @@ function CreateCabinForm({ cabin }) {
   function onError(errors) {
     console.log(errors);
   }
+
   return (
-    <Form onSubmit={handleSubmit(submitHandler, onError)}>
+    <Form type={type} onSubmit={handleSubmit(submitHandler, onError)}>
       <FormRow label="Cabin Name" errors={errors?.name?.message}>
         <Input
           type="text"
@@ -152,10 +161,19 @@ function CreateCabinForm({ cabin }) {
           disabled={isWorking}
         />
       </FormRow>
+      {/*
+  We need to make sure that if we use the CabinForm outside the modal
+  where we won't have an onCloseModal prop, the code shouldn't break.
+  That's why we will use optional chaining
+  */}
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset">
+        <Button
+          variation="secondary"
+          type="reset"
+          onClick={() => onCloseModal?.()}
+        >
           Cancel
         </Button>
         <Button disabled={isWorking}>
