@@ -48,7 +48,7 @@ function CreateCabinForm({ cabin, onCloseModal }) {
           onSuccess: () => {
             // console.log(data);
             reset();
-            () => onCloseModal?.();
+            onCloseModal?.();
           },
         }
       );
@@ -61,7 +61,7 @@ function CreateCabinForm({ cabin, onCloseModal }) {
             //the useMutation hook
             // console.log(data);
             reset();
-            () => onCloseModal?.();
+            onCloseModal?.();
           },
         }
       );

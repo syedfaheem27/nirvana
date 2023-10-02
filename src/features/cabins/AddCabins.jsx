@@ -1,5 +1,4 @@
 import Button from "../../ui/Button";
-import CabinTable from "./CabinTable";
 import CreateCabinForm from "./CreateCabinForm";
 import Modal from "../../ui/Modal";
 
@@ -33,7 +32,7 @@ So here is the use case for a compound component pattern
 
 const AddCabins = () => {
   return (
-    <>
+    <div>
       <Modal>
         <Modal.Open opens="cabin-form">
           <Button>Show Form</Button>
@@ -42,16 +41,7 @@ const AddCabins = () => {
           <CreateCabinForm />
         </Modal.Window>
       </Modal>
-
-      <Modal>
-        <Modal.Open opens="table">
-          <Button>Show Table</Button>
-        </Modal.Open>
-        <Modal.Window name="table">
-          <CabinTable />
-        </Modal.Window>
-      </Modal>
-    </>
+    </div>
   );
 };
 
