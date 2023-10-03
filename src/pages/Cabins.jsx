@@ -3,6 +3,7 @@ import Heading from "../ui/Heading";
 import Row from "../ui/Row";
 
 import AddCabins from "../features/cabins/AddCabins";
+import TableOperations from "../ui/TableOperations";
 
 /*Placing all the stateful logic in a separate component
 as the cabins page should be as lean as possible and without 
@@ -13,7 +14,7 @@ function Cabins() {
     <>
       <Row type="horizontal">
         <Heading as="h1">All cabins</Heading>
-        <p>Filter / Sort</p>
+        <TableOperations />
       </Row>
 
       <Row type="horizontal">

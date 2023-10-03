@@ -4,6 +4,7 @@ import Spinner from "../../ui/Spinner";
 import CabinRow from "./CabinRow";
 import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
+import { useSearchParams } from "react-router-dom";
 
 //These are not flexible as grid-template-colums - hardcoded
 //thus, we made use of the compound component pattern
@@ -35,8 +36,20 @@ import Menus from "../../ui/Menus";
 
 const CabinTable = () => {
   const { isLoading, cabins } = useGetCabins();
+  const [searchParams] = useSearchParams();
+
+  const filterField = searchParams.get("discount") || "all";
 
   if (isLoading) return <Spinner />;
+
+  let filteredCabins = cabins;
+
+  if (filterField === "with-discount")
+    filteredCabins = cabins.filter((cabin) => cabin.discount !== 0);
+
+  if (filterField === "no-discount")
+    filteredCabins = cabins.filter((cabin) => cabin.discount === 0);
+
   return (
     <Menus>
       <Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
@@ -50,7 +63,8 @@ const CabinTable = () => {
         </Table.Header>
 
         <Table.Body
-          data={cabins}
+          // data={cabins}
+          data={filteredCabins}
           render={(cabin) => <CabinRow cabin={cabin} key={cabin.id} />}
         />
       </Table>
