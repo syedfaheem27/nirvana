@@ -65,7 +65,7 @@ const CabinRow = ({ cabin }) => {
   //Deleting a cabin
   const { isDeleting, deleteCabin } = useDeleteCabin();
 
-  const { isCreatingCabin, createCabin } = useCreateCabin();
+  const { createCabin } = useCreateCabin();
 
   function duplicateCabinHandler() {
     createCabin({

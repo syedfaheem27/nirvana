@@ -5,6 +5,7 @@ import CabinRow from "./CabinRow";
 import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
 import { useSearchParams } from "react-router-dom";
+import Empty from "../../ui/Empty";
 
 //These are not flexible as grid-template-colums - hardcoded
 //thus, we made use of the compound component pattern
@@ -39,6 +40,8 @@ const CabinTable = () => {
   const [searchParams] = useSearchParams();
 
   if (isLoading) return <Spinner />;
+
+  if (!cabins.length) return <Empty resourceName="cabins" />;
 
   //1.Filter
   const filterField = searchParams.get("discount") || "all";
