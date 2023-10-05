@@ -36,3 +36,4 @@ const TableOperations = () => {
 };
 
 export default TableOperations;
+export { StyledTableOperations };
