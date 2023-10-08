@@ -84,7 +84,7 @@ if onCloseModal is defined => cabinForm is to be displayed inside a modal
       type={onCloseModal ? "modal" : "regular"}
       onSubmit={handleSubmit(submitHandler, onError)}
     >
-      <FormRow label="Cabin Name" errors={errors?.name?.message}>
+      <FormRow label="Cabin Name" error={errors?.name?.message}>
         <Input
           type="text"
           id="name"
@@ -95,7 +95,7 @@ if onCloseModal is defined => cabinForm is to be displayed inside a modal
         />
       </FormRow>
 
-      <FormRow label="Maximum Capacity" errors={errors?.maxCapacity?.message}>
+      <FormRow label="Maximum Capacity" error={errors?.maxCapacity?.message}>
         <Input
           type="number"
           id="maxCapacity"
@@ -114,7 +114,7 @@ if onCloseModal is defined => cabinForm is to be displayed inside a modal
         />
       </FormRow>
 
-      <FormRow label="Regular price" errors={errors?.regularPrice?.message}>
+      <FormRow label="Regular price" error={errors?.regularPrice?.message}>
         <Input
           type="number"
           id="regularPrice"
@@ -125,7 +125,7 @@ if onCloseModal is defined => cabinForm is to be displayed inside a modal
         />
       </FormRow>
 
-      <FormRow label="Discount" errors={errors?.discount?.message}>
+      <FormRow label="Discount" error={errors?.discount?.message}>
         <Input
           type="number"
           id="discount"
@@ -142,7 +142,7 @@ if onCloseModal is defined => cabinForm is to be displayed inside a modal
 
       <FormRow
         label="Description for website"
-        errors={errors?.description?.message}
+        error={errors?.description?.message}
       >
         <Textarea
           type="number"
