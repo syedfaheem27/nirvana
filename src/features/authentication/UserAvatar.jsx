@@ -22,9 +22,7 @@ const Avatar = styled.img`
 
 const UserAvatar = () => {
   const { user } = useUser();
-  const {
-    value: { fullName, avatar },
-  } = user.user_metadata;
+  const { fullName, avatar } = user.user_metadata;
 
   return (
     <StyledUserAvatar>
