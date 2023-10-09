@@ -1,16 +1,23 @@
 import { styled } from "styled-components";
-import LogOut from "../features/authentication/LogOut";
+import HeaderMenu from "./HeaderMenu";
+import UserAvatar from "../features/authentication/UserAvatar";
 
 const StyledHeader = styled.header`
   background: var(--color-grey-0);
   padding: 1.6rem 4.8rem;
   border-bottom: 1px solid var(--color-grey-100);
+
+  display: flex;
+  align-items: center;
+  gap: 2.6rem;
+  justify-content: flex-end;
 `;
 
 const Header = () => {
   return (
     <StyledHeader>
-      <LogOut />
+      <UserAvatar />
+      <HeaderMenu />
     </StyledHeader>
   );
 };
