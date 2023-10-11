@@ -92,7 +92,10 @@ const SalesChart = ({ bookings, numDays }) => {
 
   return (
     <StyledSalesChart>
-      <Heading as="h3">Sales</Heading>
+      <Heading as="h3">
+        Sales from {format(allDates.at(0), "MMM dd yyyy")} to{" "}
+        {format(allDates.at(-1), "MMM dd yyyy")}
+      </Heading>
       <ResponsiveContainer width="100%" height={300}>
         <AreaChart data={data}>
           <CartesianGrid strokeDasharray="4" />
