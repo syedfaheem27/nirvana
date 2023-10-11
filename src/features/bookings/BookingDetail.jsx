@@ -1,4 +1,8 @@
-import styled from "styled-components";
+import { useMoveBack } from "../../hooks/useMoveBack";
+import { useGetBooking } from "./useGetBooking";
+import { HiArrowUpOnSquare } from "react-icons/hi2";
+import { useCheckOut } from "../check-in-out/useCheckOut";
+import { useDeleteBooking } from "./useDeleteBooking";
 
 import BookingDataBox from "./BookingDataBox";
 import Row from "../../ui/Row";
@@ -7,16 +11,11 @@ import Tag from "../../ui/Tag";
 import ButtonGroup from "../../ui/ButtonGroup";
 import Button from "../../ui/Button";
 import ButtonText from "../../ui/ButtonText";
-
-import { useMoveBack } from "../../hooks/useMoveBack";
-import { useGetBooking } from "./useGetBooking";
-import Spinner from "../../ui/Spinner";
-import { HiArrowUpOnSquare } from "react-icons/hi2";
-import { useCheckOut } from "../check-in-out/useCheckOut";
-import { useDeleteBooking } from "./useDeleteBooking";
-import { useNavigate } from "react-router-dom";
-import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
+import Modal from "../../ui/Modal";
+import Spinner from "../../ui/Spinner";
+
+import styled from "styled-components";
 
 const HeadingGroup = styled.div`
   display: flex;
@@ -29,7 +28,6 @@ function BookingDetail() {
   const moveBack = useMoveBack();
   const { isCheckingOut, checkOut } = useCheckOut();
   const { isDeletingBooking, deleteBooking } = useDeleteBooking();
-  const navigate = useNavigate();
 
   if (isLoading) return <Spinner />;
 
@@ -78,7 +76,7 @@ function BookingDetail() {
             disabled={isDeletingBooking}
             onConfirm={() => {
               deleteBooking(bookingId, {
-                onSettled: navigate(-1),
+                onSettled: moveBack,
               });
             }}
           ></ConfirmDelete>

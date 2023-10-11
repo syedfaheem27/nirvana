@@ -15,8 +15,7 @@ const ChartBox = styled.div`
   background-color: var(--color-grey-0);
   border: 1px solid var(--color-grey-100);
   border-radius: var(--border-radius-md);
-  padding: 1.8rem;
-  padding-right: 0.3rem;
+  padding: 2rem 2.4rem;
 
   grid-column: 3 / span 2;
 
@@ -144,18 +143,17 @@ const DurationChart = ({ confirmedStays }) => {
   const { isDark } = useDarkMode();
   const startData = isDark ? startDataDark : startDataLight;
   const data = prepareData(startData, confirmedStays);
-  console.log(data);
   return (
     <ChartBox>
-      <Heading as="h3">Chart stays</Heading>
+      <Heading as="h3">Stay Duration Summary</Heading>
       <ResponsiveContainer width="100%" height={240}>
         <PieChart>
           <Pie
             data={data}
             nameKey="duration"
             dataKey="value"
-            cx="45%"
-            cy="50%"
+            cx="50%"
+            cy="48%"
             innerRadius={85}
             outerRadius={110}
             paddingAngle={3}
@@ -173,7 +171,7 @@ const DurationChart = ({ confirmedStays }) => {
             verticalAlign="center"
             align="right"
             layout="vertical"
-            width="40%"
+            width="34%"
             iconSize={10}
             iconType="circle"
           />
