@@ -10,8 +10,12 @@ import Pagination from "../../ui/Pagination";
 function BookingTable() {
   const { isLoading, bookings, error, count } = useGetBookings();
 
+  // //Purposefully created this error to check the error boundary
+  // if (!bookings.length) return <Empty resourceName="bookings" />;
+
   if (isLoading) return <Spinner />;
 
+  // if (isLoading) return <Spinner />;
   if (!bookings.length) return <Empty resourceName="bookings" />;
 
   return (
