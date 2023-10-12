@@ -14,6 +14,7 @@ import ButtonText from "../../ui/ButtonText";
 import ConfirmDelete from "../../ui/ConfirmDelete";
 import Modal from "../../ui/Modal";
 import Spinner from "../../ui/Spinner";
+import Empty from "../../ui/Empty";
 
 import styled from "styled-components";
 
@@ -30,6 +31,9 @@ function BookingDetail() {
   const { isDeletingBooking, deleteBooking } = useDeleteBooking();
 
   if (isLoading) return <Spinner />;
+
+  //Handling the case when booking is undefined
+  if (!booking) return <Empty resourceName="booking" />;
 
   const { status, id: bookingId } = booking;
   const statusToTagName = {
