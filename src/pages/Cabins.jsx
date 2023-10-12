@@ -5,10 +5,6 @@ import Row from "../ui/Row";
 import AddCabins from "../features/cabins/AddCabins";
 import TableOperations from "../ui/TableOperations";
 
-/*Placing all the stateful logic in a separate component
-as the cabins page should be as lean as possible and without 
-any stateful logic */
-
 function Cabins() {
   return (
     <>

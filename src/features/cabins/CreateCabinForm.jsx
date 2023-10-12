@@ -42,9 +42,6 @@ function CreateCabinForm({ cabin, onCloseModal }) {
           id: editCabinId,
         },
         {
-          //Data returned by the createEditCabin function passed in the mutate property in
-          //the useMutation hook
-          // console.log(data);
           onSuccess: () => {
             // console.log(data);
             reset();
@@ -57,9 +54,6 @@ function CreateCabinForm({ cabin, onCloseModal }) {
         { ...data, image: image },
         {
           onSuccess: () => {
-            //Data returned by the createEditCabin function passed in the mutate property in
-            //the useMutation hook
-            // console.log(data);
             reset();
             onCloseModal?.();
           },

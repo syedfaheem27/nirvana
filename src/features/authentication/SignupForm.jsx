@@ -88,7 +88,6 @@ function SignupForm() {
       </FormRow>
 
       <FormRow>
-        {/* type is an HTML attribute! */}
         <Button
           onClick={reset}
           disabled={isSigningUp}

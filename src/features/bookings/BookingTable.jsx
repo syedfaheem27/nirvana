@@ -8,7 +8,7 @@ import { useGetBookings } from "./useGetBookings";
 import Pagination from "../../ui/Pagination";
 
 function BookingTable() {
-  const { isLoading, bookings, error, count } = useGetBookings();
+  const { isLoading, bookings, count } = useGetBookings();
 
   // //Purposefully created this error to check the error boundary
   // if (!bookings.length) return <Empty resourceName="bookings" />;
