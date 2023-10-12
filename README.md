@@ -10,7 +10,7 @@ duration summary
 
 <h2>Tech Stack used</h2>
 <ul>
-<li>HTMl</li>
+<li>HTML</li>
 <li>CSS</li>
 <li>JS</li>
 <li>React</li>

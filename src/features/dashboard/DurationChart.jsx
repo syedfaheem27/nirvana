@@ -8,7 +8,7 @@ import {
 } from "recharts";
 import styled from "styled-components";
 import Heading from "../../ui/Heading";
-import { useDarkMode } from "../../context/DarkModeContext";
+import { useDarkMode } from "../../context/useDarkMode";
 
 const ChartBox = styled.div`
   /* Box */
