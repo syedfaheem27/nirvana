@@ -18,7 +18,7 @@ duration summary
 <li>React-Query - for managing remote state</li>
 <li>Styled components - a library that allows us to write CSS in JS while building custom components in React</li>
 <li>Supabse - Backend-as-a-Service (BaaS) app development platform which provides a full Postgres database for every project with realtime functionality, database backups, extensions, and more </li>
-<li>Recharts</li>
+<li>Recharts - a composable charting library built on React components</li>
 <li>React-Hook-Form - a performant,flexible and extensible forms library for react hooks making working with forms much more simpler</li>
 <li>React-Hot-Toast - a lightweight and customizable react notification library</li>
 <li>React-Error-Boundary - a library that ships with a simple Error boundary component</li>
