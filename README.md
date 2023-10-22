@@ -1,4 +1,4 @@
-<h1>The Wild Oasis | Nirvana</h1>
+# The Wild Oasis | Nirvana
 
 <p>
 A web application for a small boutique hotel with beautiful wooden cabins.
@@ -8,7 +8,8 @@ check-ins and the occupancy rate and also displays beautiful charts denoting the
 duration summary
 </p>
 
-<h2>Tech Stack used</h2>
+## Tech Stack used
+
 <ul>
 <li>HTML</li>
 <li>CSS</li>
@@ -25,24 +26,6 @@ duration summary
 <li>React-icons - a small library that ships in with beautiful icons that you can add to your react app</li>
 </ul>
 
-<h2>Features</h2>
-<dl>
-<dt>Dashboard</dt>
-<dd>
-A beautiful page showing all the sales data, the bookings data ,the check-ins and the occupancy rate.
-It also beautiful charts denoting the sales and the stay duration sumary and a sidebar that allows a user to 
-navigate through the application
-</dd>
-<dt>Bookings page</dt>
-<dd>It shows all the bookings - unconfirmed,checked-in and checked-out and also allows the user to sort
-them based on date of the booking and the amount. It also allows a user to confirm and delete a booking </dd>
-<dt>Cabins page</dt>
-<dd>It shows all the available cabins in the hotel and allows a user to edit the cabin details and add a new cabin</dd>
-<dt>Users page</dt>
-<dd>It allows a user to create another user</dd>
-<dt>Accounts page</dt>
-<dd>It allows a user to update the user details along with adding his/her avatar</dd>
-<dt>Settings page</dt>
-<dd>It shows all the necessary hotel settings like the minimum and the maximum booking nights, the breakfast price and so on
-and allows a user to change them</dd>
-</dl>
+## Project Structure
+
+- <button>src/context</button> : It consists of the global dark mode state managed by the React Context API
