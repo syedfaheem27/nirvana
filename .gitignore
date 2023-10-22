@@ -23,5 +23,3 @@ dist-ssr
 *.sln
 *.sw?
 
-# netlify config file for referrence
-netlify.toml
